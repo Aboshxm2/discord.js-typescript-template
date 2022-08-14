@@ -1,6 +1,6 @@
 import { Message } from "discord.js";
 
-export interface Command {
-    name: string;
-    onText(message: Message, args: string[]) : Promise<void>;
+export abstract class Command {
+    abstract name: string;
+    abstract onText(message: Message, args: string[]) : Promise<void>;
 }
