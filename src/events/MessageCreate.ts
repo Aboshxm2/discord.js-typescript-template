@@ -3,10 +3,9 @@ import { Event } from "../models/Event";
 import { prefix } from "../../config.json";
 import { Client } from "../Client";
 
-const event: Event = {
-    name: "messageCreate",
-    once: false,
-    async execute(message: Message) {
+module.exports = new class extends Event {
+    name: string = "messageCreate";
+    async execute(message: Message): Promise<void> {
         if (!message.content.startsWith(prefix) || message.author.bot)
             return;
 
@@ -22,7 +21,5 @@ const event: Event = {
             console.error(error);
             message.reply('there was an error trying to execute that command!');
         }
-    },
+    }
 }
-
-module.exports = event;

@@ -1,5 +1,5 @@
-export interface Event {
-    name: string;
-    once: boolean;
-    execute(...args: any): Promise<void>;
+export abstract class Event {
+    abstract name: string;
+    once: boolean = false;
+    abstract execute(...args: any): Promise<void>;
 }
