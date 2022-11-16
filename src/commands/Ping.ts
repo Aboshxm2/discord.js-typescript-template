@@ -1,9 +1,13 @@
-import { Message } from "discord.js";
+import { SlashCommandBuilder } from "@discordjs/builders";
+import { CacheType, CommandInteraction } from "discord.js";
 import { Command } from "../models/Command";
 
 module.exports = new class extends Command {
-    name: string = "ping";
-    async onText(message: Message, args: string[]): Promise<void> {
-        await message.reply("pong");
-    }   
+    data: SlashCommandBuilder = new SlashCommandBuilder()
+    .setName("ping")
+    .setDescription('Replies with Pong!')
+
+    async onCommand(interaction: CommandInteraction<CacheType>): Promise<void> {
+        interaction.reply("pong")
+    }
 }

@@ -1,6 +1,7 @@
-import { Message } from "discord.js";
+import { SlashCommandBuilder } from "@discordjs/builders";
+import { CommandInteraction } from "discord.js";
 
 export abstract class Command {
-    abstract name: string;
-    abstract onText(message: Message, args: string[]) : Promise<void>;
+    abstract data: SlashCommandBuilder;
+    abstract onCommand(interaction: CommandInteraction) : Promise<void>;
 }

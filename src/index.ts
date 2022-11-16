@@ -7,7 +7,7 @@ import { Event } from "./models/Event";
 import { Command } from "./models/Command";
 
 async function main(){
-    const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES] });
+    const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
     const eventsPath = path.join(__dirname, 'events');
     const eventFiles = fs.readdirSync(eventsPath).filter(file => file.endsWith('.js'));
 
@@ -29,7 +29,7 @@ async function main(){
         const command = require(filePath) as Command;
         // Set a new item in the Collection
         // With the key as the command name and the value as the exported module
-        client.commands.set(command.name, command);
+        client.commands.set(command.data.name, command);
     }
 
     client.login(token);

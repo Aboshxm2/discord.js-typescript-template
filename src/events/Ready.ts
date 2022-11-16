@@ -6,6 +6,8 @@ module.exports = new class extends Event {
     once: boolean = true;
     async execute(client: Client): Promise<void> {
         console.log(`Ready! Logged in as ${client.user?.tag}`);
+
+        client.deployCommands();
     }
     
 }
