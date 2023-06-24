@@ -1,4 +1,4 @@
-const { Events, GatewayIntentBits } = require('discord.js');
+import { GatewayIntentBits } from 'discord.js';
 import { token } from "../config.json";
 import { Client } from "./Client";
 import fs from "fs";
