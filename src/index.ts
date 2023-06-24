@@ -1,4 +1,4 @@
-import { Intents } from "discord.js";
+const { Events, GatewayIntentBits } = require('discord.js');
 import { token } from "../config.json";
 import { Client } from "./Client";
 import fs from "fs";
@@ -7,7 +7,7 @@ import { Event } from "./models/Event";
 import { Command } from "./models/Command";
 
 async function main(){
-    const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES] });
+    const client = new Client({ intents: [GatewayIntentBits.Guilds] });
     const eventsPath = path.join(__dirname, 'events');
     const eventFiles = fs.readdirSync(eventsPath).filter(file => file.endsWith('.js'));
 
